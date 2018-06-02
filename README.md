@@ -1,2 +1,2 @@
 # SlackBot
-Slack Bot - notify to channel on receiving events.
+Slack Bot on AWS - notify to channel on receiving events.
