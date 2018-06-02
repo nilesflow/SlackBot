@@ -1,0 +1,26 @@
+﻿AWSTemplateFormatVersion: '2010-09-09'
+Transform: 'AWS::Serverless-2016-10-31'
+Description: An AWS Serverless Specification template describing your function.
+Resources:
+  SlackBot:
+    Type: 'AWS::Serverless::Function'
+    Properties:
+      Handler: index.handler
+      Runtime: nodejs8.10
+      CodeUri: .
+      Description: ''
+      MemorySize: 128
+      Timeout: 10
+      Role: 'arn:aws:iam::707983430756:role/lambda_basic_execution'
+      Events:
+        Api1:
+          Type: Api
+          Properties:
+            Path: /event
+            Method: POST
+      Environment:
+        Variables:
+          SLACK_APP_VERIFY_TOKEN: verify-token
+          SLACK_BOT_TOKEN: bot-token
+          SLACK_NOTIFY_CHANNEL_ID: channel for notification (ex. #general)
+          SLACK_USER_TOKEN: user-token
