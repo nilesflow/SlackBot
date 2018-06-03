@@ -30,6 +30,10 @@ group_rename
 
 ※AWSリソースはEvent通知分だけ使用
 
+## ソースコード構成
+別のリポジトリを npm で参照させています。  
+https://github.com/nilesflow/nodefw
+
 ## セットアップ
 ```
 git clone https://github.com/nilesflow/SlackBot.git`
