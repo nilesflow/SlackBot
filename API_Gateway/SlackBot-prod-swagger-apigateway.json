@@ -1,7 +1,7 @@
 {
   "swagger": "2.0",
   "info": {
-    "version": "2018-06-02T06:14:15Z",
+    "version": "2018-06-03T15:39:34Z",
     "title": "SlackBot"
   },
   "host": "xxxxxxxxx.execute-api.ap-northeast-1.amazonaws.com",
@@ -35,13 +35,13 @@
             "default": {
               "statusCode": "200",
               "responseTemplates": {
-                "application/json": "#set($inputRoot = $input.path('$'))\n{\n    \"result\" : \"ok\"\n}"
+                "application/json": "#set($inputRoot = $input.path('$'))\r\n{\r\n    #foreach($type in $inputRoot.keySet())\r\n    \"$type\" : \"$util.escapeJavaScript($inputRoot.get($type))\"\r\n    #if($foreach.hasNext),#end\r\n    #end\r\n}"
               }
             },
             ".*\"code\":400.*": {
               "statusCode": "400",
               "responseTemplates": {
-                "application/json": "#set ($e = $util.parseJson($input.path('$.errorMessage')))\r\n{\r\n  \"error\": $e.error,\r\n  \"message\" : $e.message\r\n}"
+                "application/json": "#set ($e = $util.parseJson($input.path('$.errorMessage')))\r\n{\r\n  \"error\": $e.error,\r\n  \"message\" : $e.errorMessage\r\n}"
               }
             },
             ".*\"errorMessage\":.*": {
