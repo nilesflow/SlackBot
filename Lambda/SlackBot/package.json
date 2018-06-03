@@ -17,6 +17,6 @@
   },
   "homepage": "https://github.com/nilesflow/SlackBot#readme",
   "dependencies": {
-    "nodefw": "git+https://github.com/nilesflow/nodefw.git"
+    "nodefw": "git+https://github.com/nilesflow/nodefw.git#v1.0.0"
   }
 }
