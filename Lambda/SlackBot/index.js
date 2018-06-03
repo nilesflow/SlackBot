@@ -12,7 +12,7 @@ exports.handler = async (event) => {
         user_token: process.env.SLACK_USER_TOKEN,
         verify_token: process.env.SLACK_APP_VERIFY_TOKEN,
     });
-    await s.receiveEvent(event).catch(e => {
+    let body = await s.receiveEvent(event).catch(e => {
         // エラー応答
         if (e instanceof slack.error.SlackError) {
             // 自コードのエラー
@@ -25,6 +25,6 @@ exports.handler = async (event) => {
     });
 
     // 正常終了
-    console.log('success');
-    return;
+    console.log(body);
+    return body;
 };
